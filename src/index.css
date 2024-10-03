@@ -8,11 +8,20 @@ body {
 }
 
 .steps {
-  width: 600px;
+  max-width: 600px;
+  width: 95%;
   background-color: #f7f7f7;
   border-radius: 7px;
   padding: 25px 100px;
   margin: 100px auto;
+  border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@media (max-width: 450px) {
+  .steps {
+    padding: 30px;
+  }
 }
 
 .numbers {
