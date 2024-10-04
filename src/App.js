@@ -7,8 +7,8 @@ const messages = [
 ];
 
 export default function App() {
-  // let step = 2;
-  let [step, setStep] = useState(1);
+  const [step, setStep] = useState(1);
+  const [isOpen, setIsOpen] = useState(true);
 
   function handleNext() {
     step < messages.length && setStep(step + 1);
@@ -19,25 +19,32 @@ export default function App() {
   }
 
   return (
-    <div className="steps">
-      <Numbers step={step} />
-      <Paragraph text={`Step ${step}: ${messages[step - 1]}`} />
-      <div className="buttons">
-        <button
-          text="Previous"
-          style={{ backgroundColor: "#7950F2", color: "#fff" }}
-          onClick={handlePrevious}
-        >
-          Previous
-        </button>
-        <button
-          text="Next"
-          style={{ backgroundColor: "#7950F2", color: "#fff" }}
-          onClick={handleNext}
-        >
-          Next
-        </button>
-      </div>
+    <div>
+      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+        &times;
+      </button>
+      {isOpen && (
+        <div className="steps">
+          <Numbers step={step} />
+          <Paragraph text={`Step ${step}: ${messages[step - 1]}`} />
+          <div className="buttons">
+            <button
+              text="Previous"
+              style={{ backgroundColor: "#7950F2", color: "#fff" }}
+              onClick={handlePrevious}
+            >
+              Previous
+            </button>
+            <button
+              text="Next"
+              style={{ backgroundColor: "#7950F2", color: "#fff" }}
+              onClick={handleNext}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
