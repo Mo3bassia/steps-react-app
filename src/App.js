@@ -11,16 +11,19 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(true);
 
   function handleNext() {
-    step < messages.length && setStep(step + 1);
+    step < messages.length && setStep((step) => step + 1);
   }
 
   function handlePrevious() {
-    step > 1 && setStep(step - 1);
+    step > 1 && setStep((step) => step - 1);
   }
 
   return (
-    <div>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+    <>
+      <button
+        className="close"
+        onClick={() => setIsOpen((condition) => !condition)}
+      >
         &times;
       </button>
       {isOpen && (
@@ -45,7 +48,7 @@ export default function App() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
