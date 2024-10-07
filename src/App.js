@@ -31,20 +31,13 @@ export default function App() {
           <Numbers step={step} />
           <Paragraph text={`Step ${step}: ${messages[step - 1]}`} />
           <div className="buttons">
-            <button
-              text="Previous"
-              style={{ backgroundColor: "#7950F2", color: "#fff" }}
-              onClick={handlePrevious}
-            >
-              Previous
-            </button>
-            <button
-              text="Next"
-              style={{ backgroundColor: "#7950F2", color: "#fff" }}
-              onClick={handleNext}
-            >
-              Next
-            </button>
+            <Button onClick={handlePrevious}>
+              <span>👈</span> Previous
+            </Button>
+
+            <Button onClick={handleNext}>
+              Next <span>👉</span>
+            </Button>
           </div>
         </div>
       )}
@@ -72,4 +65,16 @@ function Numbers({ step }) {
 
 function Paragraph({ text }) {
   return <p className="message">{text}</p>;
+}
+
+function Button({ onClick, children }) {
+  console.log(children);
+  return (
+    <button
+      style={{ backgroundColor: "#7950F2", color: "#fff" }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
 }
